@@ -3,7 +3,7 @@ var gulp = require('gulp');
 var files = {
   "darwin": 'tomita-mac.bz2',
   "freebsd": 'tomita-freebsd64.bz2',
-  "linux": 'tomita-linu' + process.arch + '.bz2',
+  "linux": 'tomita-linux' + process.arch.substr(-2) + '.bz2',
   "win32": 'tomita-freebsd64.bz2'
 };
 
