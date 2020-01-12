@@ -16,7 +16,7 @@ gulp.task('download', function () {
     .pipe(gulp.dest(BIN));
 });
 
-gulp.task('decompress', ['download'], function (done) {
+gulp.task('decompress', gulp.series(['download'], function (done) {
   var Bunzip = require('seek-bzip');
   var fs = require('fs');
 
@@ -27,6 +27,6 @@ gulp.task('decompress', ['download'], function (done) {
   fs.chmodSync(BIN + 'tomita', 0755);
   fs.unlinkSync(BIN + file);
   done();
-});
+}));
 
-gulp.task('default', ['decompress']);
+gulp.task('default', gulp.series(['decompress']));
